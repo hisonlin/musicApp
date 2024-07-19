@@ -28,7 +28,7 @@ const Home = () => {
     return (
         <div>
             <h1>Spotify Music App</h1>
-            {accessToken && <div>Access Token: {accessToken}</div>}
+            {accessToken && <div>Access token: {accessToken}</div>}
         </div>
     );
 };
