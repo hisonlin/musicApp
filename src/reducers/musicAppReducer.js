@@ -1,9 +1,21 @@
-import {FETCH_TOKEN_FAILURE, FETCH_TOKEN_REQUEST, FETCH_TOKEN_SUCCESS} from "../const";
+import {
+    FETCH_NEW_RELEASES_FAILURE,
+    FETCH_NEW_RELEASES_REQUEST,
+    FETCH_NEW_RELEASES_SUCCESS,
+    FETCH_TOKEN_FAILURE,
+    FETCH_TOKEN_REQUEST,
+    FETCH_TOKEN_SUCCESS, SET_NEW_RELEASES_OFFSET
+} from "../const";
 
-const initialState={
+const initialState = {
     accessToken: '',
     loading: false,
-    error: ''
+    error: '',
+    newRelease: {
+        albums: [],
+        total: 0,
+        offset: 0
+    },
 }
 
 export const musicAppReducer = (state = initialState, action) => {
@@ -24,6 +36,32 @@ export const musicAppReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: action.payload
+            };
+        case FETCH_NEW_RELEASES_REQUEST:
+            return {
+                ...state,
+                loading: true
+            };
+        case FETCH_NEW_RELEASES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                newRelease: {
+                    albums: action.data,
+                    total: action.total,
+                    offset: action.offset
+                }
+            };
+        case FETCH_NEW_RELEASES_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            };
+        case SET_NEW_RELEASES_OFFSET:
+            return {
+                ...state,
+                newReleaseOffset: action.payload
             };
         default:
             return state;
