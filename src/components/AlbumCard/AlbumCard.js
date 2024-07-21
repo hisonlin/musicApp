@@ -2,23 +2,22 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import './AlbumCard.css';
 
-const AlbumCard = ({album}) => {
+const AlbumCard = ({detail}) => {
     return (
         <>
-            <Card key={album.id} className={'cardItem'}>
-                <Card.Img variant="top" src={album.images[0].url}/>
+            <Card className={'cardItem'}>
+                <Card.Img variant="top" src={detail.images[0].url}/>
                 <Card.Body>
-                    <Card.Title>{album.name}</Card.Title>
+                    <Card.Title>{detail.name}</Card.Title>
                     <Card.Text>
-                        {album.artists.map(artist => artist.name).join(', ')}
+                        {detail.artists.map(artist => artist.name).join(', ')}
                     </Card.Text>
                     <Card.Text>
-                        {album.release_date}
+                        {detail.release_date}
                     </Card.Text>
                 </Card.Body>
             </Card>
         </>
-
     );
 };
 

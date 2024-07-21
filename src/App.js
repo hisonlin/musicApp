@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import HomePage from "./pages/Home/HomePage";
 import {Route, Routes} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {fetchToken} from "./actions/actions";
 import NewReleasesPage from "./pages/NewReleases/NewReleasesPage";
+import TopTracksPage from "./pages/TopTracksPage/TopTracksPage";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const App = () => {
             <Routes>
                 <Route path={'/'} element={<HomePage/>}/>
                 <Route path={'/new-releases'} element={<NewReleasesPage/>}/>
+                <Route path={'/top-tracks'} element={<TopTracksPage/>}/>
             </Routes>
         </div>
     );
