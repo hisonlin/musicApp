@@ -10,8 +10,6 @@ const NewReleasesPage = () => {
     const total = useSelector(state => state.musicAppReducer.newRelease.total);
     const offset = useSelector(state => state.musicAppReducer.newRelease.offset);
     const albums = useSelector(state => state.musicAppReducer.newRelease.albums);
-    console.log(albums);
-    console.log(total);
 
     const dispatch=useDispatch();
 
@@ -48,7 +46,7 @@ const NewReleasesPage = () => {
 
     return (
         <div style={{margin:"20px"}} >
-            <Carousel type={'New Releases'} flexWrap={'wrap'} button={'no'}/>
+            <Carousel type={'New Releases'} flexWrap={'wrap'} button={'no'} item={'albums'}/>
             <div className={'btnList'}>
                 <button className={'viewAllBtn'} onClick={() => handleButton('Previous')} disabled={offset <= 0}>Previous</button>
                 <button className={'viewAllBtn'} onClick={() => handleButton('Next')} disabled={offset >= total - 50}>Next</button>

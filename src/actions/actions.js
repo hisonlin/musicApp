@@ -4,7 +4,7 @@ import {
     FETCH_NEW_RELEASES_SUCCESS,
     FETCH_TOKEN_FAILURE,
     FETCH_TOKEN_REQUEST,
-    FETCH_TOKEN_SUCCESS, SET_NEW_RELEASES_OFFSET
+    FETCH_TOKEN_SUCCESS, FETCH_TOP_TRACKS_SUCCESS, SET_NEW_RELEASES_OFFSET
 } from "../const";
 import axios from "axios";
 
@@ -77,3 +77,33 @@ export const getNewReleases =  (accessToken, limit,offset) => {
         dispatch(fetchNewReleasesFailure(error.toString()));
     }
 }};
+
+export const fetchTopTracksSuccess=(data, total)=>({
+    type: FETCH_TOP_TRACKS_SUCCESS,
+    data,
+    total,
+});
+
+export const getTopTracks = (accessToken, limit, offset) => {
+    const playlistId = '37i9dQZEVXbMDoHDwVN2tF'; // Top 50 - Global playlist ID
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Accept-Language': 'en'
+                },
+                params: {
+                    limit: limit,
+                    offset: offset
+                }
+            });
+            const data = response.data;
+            console.log('Top Tracks', data);
+            dispatch(fetchTopTracksSuccess(data.items));
+
+        } catch (error) {
+            console.error('Error fetching top tracks:', error);
+        }
+    };
+}

@@ -4,7 +4,7 @@ import {
     FETCH_NEW_RELEASES_SUCCESS,
     FETCH_TOKEN_FAILURE,
     FETCH_TOKEN_REQUEST,
-    FETCH_TOKEN_SUCCESS, SET_NEW_RELEASES_OFFSET
+    FETCH_TOKEN_SUCCESS, FETCH_TOP_TRACKS_SUCCESS, SET_NEW_RELEASES_OFFSET
 } from "../const";
 
 const initialState = {
@@ -16,6 +16,7 @@ const initialState = {
         total: 0,
         offset: 0
     },
+    topTracks: []
 }
 
 export const musicAppReducer = (state = initialState, action) => {
@@ -58,10 +59,10 @@ export const musicAppReducer = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             };
-        case SET_NEW_RELEASES_OFFSET:
+        case FETCH_TOP_TRACKS_SUCCESS:
             return {
                 ...state,
-                newReleaseOffset: action.payload
+                topTracks: action.data
             };
         default:
             return state;
