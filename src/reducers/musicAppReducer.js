@@ -1,10 +1,8 @@
 import {
-    FETCH_NEW_RELEASES_FAILURE,
-    FETCH_NEW_RELEASES_REQUEST,
-    FETCH_NEW_RELEASES_SUCCESS,
-    FETCH_TOKEN_FAILURE,
-    FETCH_TOKEN_REQUEST,
-    FETCH_TOKEN_SUCCESS, FETCH_TOP_TRACKS_SUCCESS, SET_NEW_RELEASES_OFFSET
+    FETCH_FAILURE,
+    FETCH_NEW_RELEASES_SUCCESS, FETCH_REQUEST,
+    FETCH_TOKEN_SUCCESS,
+    FETCH_TOP_TRACKS_SUCCESS,
 } from "../const";
 
 const initialState = {
@@ -16,12 +14,16 @@ const initialState = {
         total: 0,
         offset: 0
     },
-    topTracks: []
+    topTracks: {
+        tracks: [],
+        total:0,
+        offset:0
+    }
 }
 
 export const musicAppReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_TOKEN_REQUEST:
+        case FETCH_REQUEST:
             return {
                 ...state,
                 loading: true
@@ -32,16 +34,11 @@ export const musicAppReducer = (state = initialState, action) => {
                 loading: false,
                 accessToken: action.payload
             };
-        case FETCH_TOKEN_FAILURE:
+        case FETCH_FAILURE:
             return {
                 ...state,
                 loading: false,
                 error: action.payload
-            };
-        case FETCH_NEW_RELEASES_REQUEST:
-            return {
-                ...state,
-                loading: true
             };
         case FETCH_NEW_RELEASES_SUCCESS:
             return {
@@ -53,16 +50,14 @@ export const musicAppReducer = (state = initialState, action) => {
                     offset: action.offset
                 }
             };
-        case FETCH_NEW_RELEASES_FAILURE:
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            };
         case FETCH_TOP_TRACKS_SUCCESS:
             return {
                 ...state,
-                topTracks: action.data
+                topTracks: {
+                    tracks: action.data,
+                    total: action.total,
+                    offset: action.offset
+                }
             };
         default:
             return state;

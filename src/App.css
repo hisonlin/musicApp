@@ -1,11 +1,12 @@
 .viewAllBtn {
-  background-color: black;
-  color: white;
+  background-color: mediumspringgreen;
+  color: black;
   width: 120px;
   height: 50px;
+  border-radius: 10px;
 }
 .viewAllBtn:hover{
-  background-color: white;
+  background-color: #0fc37d;
   color: black;
   cursor: pointer;
 }
