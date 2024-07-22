@@ -1,15 +1,14 @@
 import {
-    FETCH_NEW_RELEASES_FAILURE,
-    FETCH_NEW_RELEASES_REQUEST,
+    FETCH_FAILURE,
     FETCH_NEW_RELEASES_SUCCESS,
-    FETCH_TOKEN_FAILURE,
-    FETCH_TOKEN_REQUEST,
-    FETCH_TOKEN_SUCCESS, FETCH_TOP_TRACKS_SUCCESS, SET_NEW_RELEASES_OFFSET
+    FETCH_REQUEST,
+    FETCH_TOKEN_SUCCESS,
+    FETCH_TOP_TRACKS_SUCCESS,
 } from "../const";
 import axios from "axios";
 
-const fetchTokenRequest = () => ({
-    type: FETCH_TOKEN_REQUEST
+const fetchRequest = () => ({
+    type: FETCH_REQUEST
 });
 
 const fetchTokenSuccess = (token) => ({
@@ -17,28 +16,24 @@ const fetchTokenSuccess = (token) => ({
     payload: token
 });
 
-const fetchTokenFailure = (error) => ({
-    type: FETCH_TOKEN_FAILURE,
+const fetchFailure = (error) => ({
+    type: FETCH_FAILURE,
     payload: error
 });
 
 
 export const fetchToken = () => {
     return async (dispatch) => {
-        dispatch(fetchTokenRequest());
+        dispatch(fetchRequest());
         try {
             const response = await fetch('http://localhost:3001/token');
             const data = await response.json();
             dispatch(fetchTokenSuccess(data.access_token));
         } catch (error) {
-            dispatch(fetchTokenFailure(error.toString()));
+            dispatch(fetchFailure(error.toString()));
         }
     };
 };
-
-const fetchNewReleasesRequest = () => ({
-    type: FETCH_NEW_RELEASES_REQUEST
-});
 
 const fetchNewReleasesSuccess = (data, total, offset) => ({
     type: FETCH_NEW_RELEASES_SUCCESS,
@@ -47,15 +42,10 @@ const fetchNewReleasesSuccess = (data, total, offset) => ({
     offset
 });
 
-const fetchNewReleasesFailure = (error) => ({
-    type: FETCH_NEW_RELEASES_FAILURE,
-    payload: error
-});
-
 
 export const getNewReleases =  (accessToken, limit,offset) => {
     return async (dispatch)=>{
-    dispatch(fetchNewReleasesRequest());
+    dispatch(fetchRequest());
     try {
         const response = await axios.get(`https://api.spotify.com/v1/browse/new-releases`, {
             headers: {
@@ -74,19 +64,21 @@ export const getNewReleases =  (accessToken, limit,offset) => {
 
     } catch (error) {
         console.error('Error fetching new releases:', error);
-        dispatch(fetchNewReleasesFailure(error.toString()));
+        dispatch(fetchFailure(error.toString()));
     }
 }};
 
-export const fetchTopTracksSuccess=(data, total)=>({
+export const fetchTopTracksSuccess=(data, total, offset)=>({
     type: FETCH_TOP_TRACKS_SUCCESS,
     data,
     total,
+    offset
 });
 
 export const getTopTracks = (accessToken, limit, offset) => {
     const playlistId = '37i9dQZEVXbMDoHDwVN2tF'; // Top 50 - Global playlist ID
     return async (dispatch) => {
+        dispatch(fetchRequest());
         try {
             const response = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
                 headers: {
@@ -100,10 +92,12 @@ export const getTopTracks = (accessToken, limit, offset) => {
             });
             const data = response.data;
             console.log('Top Tracks', data);
-            dispatch(fetchTopTracksSuccess(data.items));
+            const total = data.total;
+            dispatch(fetchTopTracksSuccess(data.items,total,offset));
 
         } catch (error) {
             console.error('Error fetching top tracks:', error);
+            dispatch(fetchFailure(error.toString()));
         }
     };
 }

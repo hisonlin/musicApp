@@ -1,5 +1,5 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect, useState} from 'react';
+import { useSelector} from "react-redux";
 import AlbumCard from "../AlbumCard/AlbumCard";
 import {useNavigate} from "react-router-dom";
 import './Carousel.css';
@@ -9,19 +9,23 @@ import TrackCard from "../TrackCard/TrackCard";
 const Carousel = ({type, flexWrap, button}) => {
     //for new releases
     const albums = useSelector(state => state.musicAppReducer.newRelease.albums);
-    const topTracks = useSelector(state => state.musicAppReducer.topTracks);
+
+    //for top 50 tracks
+    const topTracks = useSelector(state => state.musicAppReducer.topTracks.tracks);
+
     console.log("albums from carousel", albums)
     console.log("topTracks from carousel", topTracks)
     const navigate = useNavigate();
 
+
     const handleViewAll = () => {
         switch (type) {
             case 'New Releases':
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top
+                window.scrollTo({top: 0, behavior: 'smooth'}); // Scroll to the top
                 navigate('/new-releases');
                 break;
             case 'Top 50 Tracks':
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top
+                window.scrollTo({top: 0, behavior: 'smooth'}); // Scroll to the top
                 navigate('/top-tracks');
                 break
             default:
@@ -48,6 +52,7 @@ const Carousel = ({type, flexWrap, button}) => {
                             position: "relative",
                             left: "50%",
                             transform: "translateX(-50%)",
+                            top: "20px"
                         }}>
                     View All
                 </button>}

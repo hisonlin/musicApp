@@ -6,7 +6,7 @@ import Carousel from "../../components/Carousel/Carousel";
 const TopTracksPage = () => {
 
     const accessToken = useSelector(state => state.musicAppReducer.accessToken);
-    const topTracks = useSelector(state => state.musicAppReducer.topTracks);
+    const topTracks = useSelector(state => state.musicAppReducer.topTracks.tracks);
 
     console.log("topTracks from page", topTracks)
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const TopTracksPage = () => {
     }, [accessToken]);
 
     if (topTracks.length === 0) {
-        return <div>Loading...</div>; // Show a loading message while data is being fetched
+        return null;
     }
 
     return (

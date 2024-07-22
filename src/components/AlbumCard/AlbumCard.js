@@ -8,11 +8,11 @@ const AlbumCard = ({detail}) => {
             <Card className={'cardItem'}>
                 <Card.Img variant="top" src={detail.images[0].url}/>
                 <Card.Body>
-                    <Card.Title>{detail.name}</Card.Title>
-                    <Card.Text>
+                    <Card.Title c>{detail.name}</Card.Title>
+                    <Card.Text >
                         {detail.artists.map(artist => artist.name).join(', ')}
                     </Card.Text>
-                    <Card.Text>
+                    <Card.Text >
                         {detail.release_date}
                     </Card.Text>
                 </Card.Body>

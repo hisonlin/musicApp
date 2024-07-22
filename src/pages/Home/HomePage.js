@@ -6,7 +6,7 @@ import Carousel from "../../components/Carousel/Carousel";
 const HomePage = () => {
     const accessToken = useSelector(state => state.musicAppReducer.accessToken);
     const newReleases = useSelector(state => state.musicAppReducer.newRelease.albums);
-    const topTracks = useSelector(state => state.musicAppReducer.topTracks);
+    const topTracks = useSelector(state => state.musicAppReducer.topTracks.tracks);
 
     const dispatch = useDispatch();
 

@@ -46,7 +46,7 @@ const NewReleasesPage = () => {
 
     return (
         <div style={{margin:"20px"}} >
-            <Carousel type={'New Releases'} flexWrap={'wrap'} button={'no'} item={'albums'}/>
+            <Carousel type={'New Releases'} flexWrap={'wrap'} button={'no'}/>
             <div className={'btnList'}>
                 <button className={'viewAllBtn'} onClick={() => handleButton('Previous')} disabled={offset <= 0}>Previous</button>
                 <button className={'viewAllBtn'} onClick={() => handleButton('Next')} disabled={offset >= total - 50}>Next</button>
