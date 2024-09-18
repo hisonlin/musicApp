@@ -24,7 +24,7 @@ const initialState = {
     searchResults: {
         tracks: [],
         artists: [],
-        albums: null
+        album: null
     }
 }
 
@@ -78,7 +78,7 @@ export const musicAppReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     searchResults: {
-                        albums: action.data
+                        album: action.data
                     }
                 };
 

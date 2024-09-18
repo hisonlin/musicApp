@@ -60,7 +60,7 @@ export const getNewReleases = (accessToken, limit, offset) => {
                 }
             });
             const data = response.data;
-            console.log('New Releases', data);
+            // console.log('New Releases', data);
             const total = data.albums.total;
             dispatch(fetchNewReleasesSuccess(data.albums.items, total, offset));
 
@@ -94,7 +94,7 @@ export const getTopTracks = (accessToken, limit, offset) => {
                 }
             });
             const data = response.data;
-            console.log('Top Tracks', data);
+            // console.log('Top Tracks', data);
             const total = data.total;
             dispatch(fetchTopTracksSuccess(data.items, total, offset));
 
@@ -151,8 +151,8 @@ export const search = (accessToken, query) => {
             const artistsData = artistsResponse.data.artists;
 
             // Log responses for debugging
-            console.log('Tracks:', tracksData);
-            console.log('Artists:', artistsData);
+            // console.log('Tracks:', tracksData);
+            // console.log('Artists:', artistsData);
 
             // Dispatch the combined success action
             dispatch(fetchSearchSuccess(
@@ -182,7 +182,7 @@ export const searchAlbum = (accessToken, id) => {
                 }
             });
             const data = response.data;
-            console.log('Album:', data);
+            // console.log('Album:', data);
             dispatch(searchAlbumSuccess(data));
         } catch (error) {
             console.error('Error fetching album:', error);

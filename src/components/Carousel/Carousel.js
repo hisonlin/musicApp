@@ -13,8 +13,8 @@ const Carousel = ({type, flexWrap, button}) => {
     //for top 50 tracks
     const topTracks = useSelector(state => state.musicAppReducer.topTracks.tracks);
 
-    console.log("albums from carousel", albums)
-    console.log("topTracks from carousel", topTracks)
+    // console.log("albums from carousel", albums)
+    // console.log("topTracks from carousel", topTracks)
     const navigate = useNavigate();
 
 
