@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getNewReleases, getTopTracks} from "../../actions/actions";
 import Carousel from "../../components/Carousel/Carousel";
+import SerachBar from "../../components/SerachBar/SerachBar";
 
 const HomePage = () => {
     const accessToken = useSelector(state => state.musicAppReducer.accessToken);
@@ -19,6 +20,7 @@ const HomePage = () => {
 
     return (
         <div>
+            <SerachBar/>
             {newReleases.length > 0 &&<Carousel type={'New Releases'} flexWrap={'nowrap'} button={'yes'}/>}
             {topTracks.length > 0 &&<Carousel type={'Top 50 Tracks'} flexWrap={'nowrap'} button={'yes'}/>}
         </div>

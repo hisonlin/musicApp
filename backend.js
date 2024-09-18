@@ -9,8 +9,6 @@ const port = 3001;
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-console.log('CLIENT_ID:', clientId);
-console.log('CLIENT_SECRET:', clientSecret);
 
 // Enable CORS
 //allow you to make request from the frontend to the backend, means from fronted Port 3000 to backend Port 3001
@@ -32,7 +30,7 @@ app.get('/token', async (req, res) => {
         });
 
         const { access_token, token_type, expires_in } = response.data;
-        console.log('Access Token:', access_token);
+        // console.log('Access Token:', access_token);
 
         res.json({ access_token, token_type, expires_in });
     } catch (error) {

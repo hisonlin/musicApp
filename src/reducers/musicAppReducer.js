@@ -3,6 +3,8 @@ import {
     FETCH_NEW_RELEASES_SUCCESS, FETCH_REQUEST,
     FETCH_TOKEN_SUCCESS,
     FETCH_TOP_TRACKS_SUCCESS,
+    FETCH_SEARCH_SUCCESS,
+    SEARCH_ALBUM_SUCCESS
 } from "../const";
 
 const initialState = {
@@ -18,6 +20,11 @@ const initialState = {
         tracks: [],
         total:0,
         offset:0
+    },
+    searchResults: {
+        tracks: [],
+        artists: [],
+        albums: null
     }
 }
 
@@ -59,6 +66,22 @@ export const musicAppReducer = (state = initialState, action) => {
                     offset: action.offset
                 }
             };
+        case FETCH_SEARCH_SUCCESS:
+            return {
+                ...state,
+                searchResults: {
+                    tracks: action.tracks,
+                    artists: action.artists
+                }
+            };
+            case SEARCH_ALBUM_SUCCESS:
+                return {
+                    ...state,
+                    searchResults: {
+                        albums: action.data
+                    }
+                };
+
         default:
             return state;
     }
