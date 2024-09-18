@@ -1,0 +1,6 @@
+@media screen and (max-width: 750px) {
+    #search-result-card{
+        max-width: 150px;
+        min-width:150px
+    }
+}

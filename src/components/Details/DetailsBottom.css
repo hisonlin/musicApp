@@ -1,0 +1,31 @@
+.table {
+    min-height: auto;
+    position: relative;
+    background: linear-gradient(0deg, rgb(40, 40, 40) 1%, transparent 90%);
+    color: whitesmoke;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    background-color: rgba(40, 40, 40, 0.8);
+    /* Semi-transparent dark background for table cells */
+    color: whitesmoke;
+    padding: 15px;
+    border: none;
+    font-size: 2rem;
+}
+
+.play-td {
+   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+
+    .table th,
+    .table td {
+        font-size: 1rem;
+    }
+
+
+}

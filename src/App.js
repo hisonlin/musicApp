@@ -5,6 +5,8 @@ import {useDispatch} from "react-redux";
 import {fetchToken} from "./actions/actions";
 import NewReleasesPage from "./pages/NewReleases/NewReleasesPage";
 import TopTracksPage from "./pages/TopTracksPage/TopTracksPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import AlbumPage from "./pages/AlbumPage/AlbumPage";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -30,6 +32,8 @@ const App = () => {
                 <Route path={'/'} element={<HomePage/>}/>
                 <Route path={'/new-releases'} element={<NewReleasesPage/>}/>
                 <Route path={'/top-tracks'} element={<TopTracksPage/>}/>
+                <Route path={'/search/:input'} element={<SearchPage/>}/>
+                <Route path={'/album/:id'} element={<AlbumPage/>}/>
             </Routes>
         </div>
     );

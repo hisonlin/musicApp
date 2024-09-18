@@ -11,7 +11,7 @@ const NewReleasesPage = () => {
     const offset = useSelector(state => state.musicAppReducer.newRelease.offset);
     const albums = useSelector(state => state.musicAppReducer.newRelease.albums);
 
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (accessToken) {
@@ -37,7 +37,7 @@ const NewReleasesPage = () => {
                 default:
                     break;
             }
-        }, 500); // Adjust the delay as needed
+        }, 500);
     };
 
     if(albums.length===0){

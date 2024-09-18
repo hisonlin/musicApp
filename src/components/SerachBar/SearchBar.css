@@ -1,0 +1,45 @@
+.searchBarContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.searchBar{
+    width: 40%;
+    position: relative;
+}
+
+.searchBar input{
+    width:100%;
+    padding: 20px 20px 20px 50px;
+    border-radius: 100px;
+    background-color: rgba(48, 48, 48, 0.3);
+    border: 2px solid rgba(200, 200, 200, 0.3);
+    color: whitesmoke;
+    
+}
+
+.searchBar input:focus{
+    background-color: rgba(200, 200, 200, 0.3);
+    border: 2px solid rgba(48, 48, 48, 0.3);
+}
+
+.searchIcon{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 768px){
+    .searchBar{
+        width: 100%;
+    }
+    
+}
+

@@ -1,0 +1,96 @@
+.details-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+    gap:10%;
+}
+
+.album-name{
+    color: whitesmoke;
+    font-size: 8rem;
+    z-index: 1;
+}
+
+.artists{
+    color: whitesmoke;
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.tracks{
+    color: whitesmoke;
+    font-size: 2rem;
+    z-index: 1;
+}
+
+.spotify{
+    color: whitesmoke;
+    font-size: 2rem;
+    text-decoration: underline;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.details-top-left{
+    display: flex;
+   
+    justify-content: center;
+    align-items: center;
+
+}
+
+.details-top-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .details-top{
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .details-top-right{
+        align-items: start;
+        gap:5px;
+    }
+    
+}
+
+@media  screen and (max-width: 700px) {
+    .album-name{
+        font-size: 6rem;
+    }
+    .artists{
+        font-size: 2rem;
+    }
+    .tracks{
+        font-size: 1.5rem;
+    }
+    .spotify{
+        font-size: 1.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .album-name{
+        font-size: 4rem;
+    }
+    .artists{
+        font-size: 1.5rem;
+    }
+    .tracks{
+        font-size: 1rem;
+    }
+    .spotify{
+        font-size: 1rem;
+    }
+    
+}
