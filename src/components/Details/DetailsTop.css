@@ -33,11 +33,15 @@
 }
 
 .spotify{
-    color: whitesmoke;
+    color: #1DB954;
     font-size: 2rem;
     text-decoration: underline;
     cursor: pointer;
     z-index: 1;
+}
+
+.spotify:hover{
+    color: #1ED760;
 }
 
 @media  screen and (max-width: 800px) {

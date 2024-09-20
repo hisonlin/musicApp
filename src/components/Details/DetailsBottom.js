@@ -2,11 +2,13 @@ import React from 'react'
 import './DetailsBottom.css'
 import playCircle from '../../assests/play-circle.svg'
 import stopCircle from '../../assests/stop-circle.svg'
-import { useState } from 'react'
+import slash from '../../assests/slash.svg'
+import { useState, useEffect } from 'react'
 
 const DetailsBottom = ({ album }) => {
     const playIcon = <img src={playCircle} alt='play' />;
     const stopIcon = <img src={stopCircle} alt='stop' />;
+    const slashIcon = <img src={slash} alt='slash' />;
 
     // State to track currently playing audio and track ID
     const [currentAudio, setCurrentAudio] = useState(null);
@@ -38,6 +40,15 @@ const DetailsBottom = ({ album }) => {
         }
     };
 
+       //pause music when unmounting
+       useEffect(() => {
+        return () => {
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+        };
+    }, [currentAudio]);
+
     return (
         <div className='details-bottom'>
             <table className='table'>
@@ -56,7 +67,7 @@ const DetailsBottom = ({ album }) => {
                             {track.preview_url ?<td className='play-td' onClick={() =>  playMusic(track.id, track.preview_url)}>
                                 {/* Conditionally render play or stop icon */}
                                 {track.id === currentTrackId ? stopIcon : playIcon}
-                            </td>:<td></td>}
+                            </td>:<td>{slashIcon}</td>}
                             <td>{track.name}</td>
                             <td>{(track.duration_ms / 60000).toFixed(2)}m</td>
                         </tr>

@@ -51,3 +51,30 @@
     cursor: pointer;
 }
 
+.card-bottom{
+    position: absolute;
+    width: calc(100% - 20px);
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-spotify{
+    color: #1DB954;
+    cursor: pointer;
+}
+
+.card-spotify:hover{
+    color: #1ED760;
+    text-decoration: underline;
+}
+
+.card-album{
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.card-album:hover{
+    text-decoration: underline;
+}
