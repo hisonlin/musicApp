@@ -1,23 +1,29 @@
 .details-top{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: start;
     max-width: 1200px;
-    padding: 20px;
+    padding: 50px;
     margin: 0 auto;
-    gap:10%;
+    gap:20px;
+    background-color: rgba(40, 40, 40, 0.8);
+    border-bottom: 3px solid rgb(245, 245, 245,0.1);
+
 }
 
 .album-name{
     color: whitesmoke;
-    font-size: 8rem;
+    font-size: 6rem;
     z-index: 1;
+    line-height: 85%;
+    
 }
 
 .artists{
     color: whitesmoke;
     font-size: 3rem;
     z-index: 1;
+    line-height: 85%;
 }
 
 .tracks{
@@ -34,38 +40,9 @@
     z-index: 1;
 }
 
-.details-top-left{
-    display: flex;
-   
-    justify-content: center;
-    align-items: center;
-
-}
-
-.details-top-right{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 10px;
-}
-
-@media screen and (max-width: 1024px) {
-    .details-top{
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-    }
-    .details-top-right{
-        align-items: start;
-        gap:5px;
-    }
-    
-}
-
-@media  screen and (max-width: 700px) {
+@media  screen and (max-width: 800px) {
     .album-name{
-        font-size: 6rem;
+        font-size: 5rem;
     }
     .artists{
         font-size: 2rem;
@@ -79,18 +56,9 @@
     
 }
 
-@media screen and (max-width: 500px) {
-    .album-name{
-        font-size: 4rem;
-    }
-    .artists{
-        font-size: 1.5rem;
-    }
-    .tracks{
-        font-size: 1rem;
-    }
-    .spotify{
-        font-size: 1rem;
-    }
-    
+@media screen and (max-width: 550px) {
+   .details-top{
+    padding: 20px;
+   }
 }
+
