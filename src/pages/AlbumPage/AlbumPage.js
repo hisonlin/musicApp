@@ -14,7 +14,7 @@ const AlbumPage = () => {
 
     const accessToken = useSelector(state => state.musicAppReducer.accessToken);
     const album = useSelector(state => state.musicAppReducer.searchResults.album);
-    console.log('Album:', album);
+    // console.log('Album:', album);
 
     const dispatch = useDispatch();
 
@@ -24,6 +24,8 @@ const AlbumPage = () => {
             dispatch(searchAlbum(accessToken, albumID));
         }
     }, [accessToken]);
+
+  
 
     return (
         <div>

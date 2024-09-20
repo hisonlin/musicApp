@@ -1,6 +1,5 @@
 import React from 'react'
 import './DetailsTop.css'
-import Image from 'react-bootstrap/Image'
 
 const DetailsTop = ({ album }) => {
 
@@ -13,7 +12,7 @@ const DetailsTop = ({ album }) => {
             <div className='artists'>{album.artists.map(artist => artist.name).join(', ')}</div>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <div className='tracks'>{album.total_tracks} track(s)</div>
-                <div className='spotify' onClick={handleSpotifyClick}>Go Spotify</div>
+                <div className='spotify' onClick={handleSpotifyClick}>Spotify</div>
             </div>
         </div>
     )
