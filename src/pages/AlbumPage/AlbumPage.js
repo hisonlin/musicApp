@@ -28,7 +28,12 @@ const AlbumPage = () => {
     return (
         <div>
             <SerachBar />
-            <div className='details'>
+            <div className='details' style={{
+                    backgroundImage: album ? `url(${album.images[0].url})` : 'none',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',  
+                }}>
                 {album && <DetailsTop album={album} />}
                 {album && <DetailsBottom album={album} />} 
             </div>
